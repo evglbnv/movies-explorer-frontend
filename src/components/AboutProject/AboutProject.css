@@ -1,0 +1,16 @@
+.about-project {
+    margin: 110px 70px 100px 70px;
+    background-color: #202020;
+    max-width: 100%;
+    max-height: 608px;
+}
+
+.about-project__heading {
+    border-bottom: 1px solid #DADADA;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    text-align: left;
+    color: #fff;
+}
