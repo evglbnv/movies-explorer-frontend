@@ -20,19 +20,19 @@ function AboutMe() {
             <p className='about-me__portfolio'>Портфолио</p>
             <ul className='about-me__portfolio-links'>
                 <li className='about-me__link-item'>
-                    <a className='about-me__link-wrapper' href="#">
+                    <a className='about-me__link-wrapper' target="_blank" rel="noreferrer" href="https://evglbnv.github.io/russian-travel/">
                         <p className='about-me__link-title'>Статичный сайт</p>
                         <span className="about-me__link-arrow">↗</span>
                     </a>
                 </li>
                 <li className='about-me__link-item'>
-                    <a className='about-me__link-wrapper' href="#">
+                    <a className='about-me__link-wrapper' target="_blank" rel="noreferrer" href="https://evglbnv.github.io/russian-travel/">
                         <p className='about-me__link-title'>Адаптивный сайт</p>
                         <span className="about-me__link-arrow">↗</span>
                     </a>
                 </li>
                 <li className='about-me__link-item'>
-                    <a className='about-me__link-wrapper' href="#">
+                    <a className='about-me__link-wrapper' target="_blank" rel="noreferrer" href="https://evglbnv.nomoredomains.rocks/">
                         <p className='about-me__link-title'>Одностраничное приложение</p>
                         <span className="about-me__link-arrow">↗</span>
                     </a>

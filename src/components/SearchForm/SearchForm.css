@@ -44,15 +44,13 @@
 
 }
 
-@media screen and (max-width: 1270px) {
-    .search-form__input {
-        width: 708px;
-    }
+.search-form__input::placeholder {
+    padding-left: 23px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1270px) {
     .search-form__input {
-        width: 300px;
+        width: 90vw;
     }
 }
 
@@ -76,4 +74,9 @@
     line-height: 18px;
     font-size: 11px;
     text-align: center;
+}
+
+.search-form__button:hover {
+    opacity: 0.8;
+    transition: opacity 0.3s;
 }

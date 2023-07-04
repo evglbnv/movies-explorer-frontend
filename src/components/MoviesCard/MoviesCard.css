@@ -1,8 +1,7 @@
-.movies-card__template {}
-
 .movies-card {
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
     cursor: pointer;
+    list-style: none;
 }
 
 .movies-card__container {

@@ -7,8 +7,7 @@ function MoviesCard() {
   const location = useLocation()
 
     return(
-        <div className="movies-card__template">
-            <article className="movies-card">
+        <li className="movies-card">
                 <div className='movies-card__container'>
                 <div className="movies-card__name-section">
                     <p className="movies-card__name">calling</p>
@@ -22,8 +21,7 @@ function MoviesCard() {
                 }
                 </div>
                 <img className="movies-card__image" src={testfilm} alt="имя фильма"></img>
-            </article>
-        </div>
+        </li>
     )
 }
 

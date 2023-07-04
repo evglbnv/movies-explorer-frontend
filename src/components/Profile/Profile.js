@@ -20,10 +20,10 @@ function Profile() {
                     <label className='profile__form-label'>
                         Email
                         <input className="profile__input"
-                        type="name"
+                        type="email"
                         name="email"
                         id="email"
-                        placeholder='jeilo610@gmail.com'
+                        placeholder="email"
                         required
                         />
                     </label>

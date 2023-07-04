@@ -6,13 +6,13 @@ import AboutMe from "../AboutMe/AboutMe"
 
 function Main () {
     return (
-        <div>
+        <main>
             <Promo/>
             <LandingNav></LandingNav>
             <AboutProject></AboutProject>
             <AboutTechs></AboutTechs>
             <AboutMe></AboutMe>
-        </div>
+        </main>
     )
 }
 

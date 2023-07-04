@@ -3,20 +3,13 @@
     flex-direction: column;
     justify-content: space-between;
     width: 396px;
-    margin: 70px auto 70px auto;
-}
-
-@media screen and (max-width: 900px) {
-    .form {
-        margin: 232px 186px 232px 186px;
-
-    }
+    margin: 0 auto;
+    padding-top: 70px;
 }
 
 @media screen and (max-width: 767px) {
     .form {
-        margin: 56px 30px 30px 30px;
-        width: 260px;
+        width: calc(100vw - 60px);
     }
 }
 

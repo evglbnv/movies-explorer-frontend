@@ -40,7 +40,7 @@
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 568px) {
     .about-project__info {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 90px 1fr 1fr 1fr;
@@ -125,7 +125,7 @@
     font-size: 14px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 568px) {
     .about-project__infographics {
         font-size: 11px;
         grid-template-columns: 100fr 184fr;

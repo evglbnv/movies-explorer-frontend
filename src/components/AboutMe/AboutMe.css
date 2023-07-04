@@ -145,6 +145,7 @@
     letter-spacing: 0em;
     text-align: left;
     text-decoration: none;
+    color: #FFF;
 }
 
 .about-me__photo {
@@ -157,6 +158,7 @@
     .about-me__photo {
         height: auto;
         width: 100%;
+        margin-bottom: 40px;
     }
 }
 
