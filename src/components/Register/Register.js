@@ -1,12 +1,40 @@
 import "./Register.css"
+import { useState } from "react";
 
 import {Link} from "react-router-dom"
 import formLink from '../../images/formLink.svg'
 
-function Register() {
+function Register({handleRegistration}) {
+
+    const [userRegistrationData, setUserRegistrationData] = useState({
+        name: "",
+        email: "",
+        password: "",
+    });
+
+    const [errors, setErrors] = useState({})
+    const [isValid, setIsValid] = useState(false)
+ 
+    function handleChange(e) {
+        const {name, value} = e.target
+        setUserRegistrationData({
+            ...userRegistrationData,
+            [name]:value,
+        })
+
+        setErrors({...errors, [name]: e.target.validationMessage})
+        setIsValid(e.target.closest("form").checkValidity());
+     }
+
+     function handleSubmit(e) {
+        e.preventDefault();
+        handleRegistration(userRegistrationData)
+        console.log(userRegistrationData)
+     }
+
     return(
         <main>
-            <form className="form">
+            <form className="form" onSubmit={handleSubmit}>
             <div className="form__info">
                 <Link className="form__link" to="/">
                     <img className="form__image" src={formLink} alt="логотип"/>
@@ -15,21 +43,28 @@ function Register() {
                 <label className="form__input-lable">
                     Имя
                     <input className="form__input" 
-                    type="email" 
-                    name="email" 
+                    type="name" 
+                    name="name"
+                    id="name"
                     placeholder="Имя" 
-                    required />
+                    required 
+                    value={userRegistrationData.name}
+                    onChange={handleChange}
+                    />
                 </label>
-                <span className="form__error">Что-то пошло не так</span>
+                <span className="form__error">{errors.name}</span>
                 <label className="form__input-lable">
                     Email
                     <input className="form__input" 
                     type="email" 
                     name="email" 
                     placeholder="Email" 
-                    required />
+                    required
+                    value={userRegistrationData.email}
+                    onChange={handleChange}
+                    />
                 </label>
-                <span className="form__error">Ошибка ввода email</span>
+                <span className="form__error">{errors.email}</span>
                 <label className="form__input-lable">
                     Пароль
                     <input className="form__input"
@@ -39,12 +74,14 @@ function Register() {
                      required
                      minLength="2"
                      maxLength="30"
+                     value={userRegistrationData.password}
+                     onChange={handleChange}
                      />
                 </label>
-                <span className="form__error">Ошибка ввода password</span>
+                <span className="form__error">{errors.password}</span>
             </div>
             <div className="form__buttons-section">
-                <button className="form__submit-button form__submit-button_disabled">Зарегистрироваться</button>
+                <button className={isValid ? "form__submit-button" : "form__submit-button form__submit-button_disabled"}>Зарегистрироваться</button>
                 <p className="form__question">
                     Уже зарегистрированы?
                     <Link to='/signin' className="form__link">Войти</Link>

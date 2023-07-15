@@ -80,3 +80,18 @@
     opacity: 0.8;
     transition: opacity 0.3s;
 }
+
+.searchForm__error {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    color: red;
+}
+
+.searchForm__error_active {
+    display: block;
+}

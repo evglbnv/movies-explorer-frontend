@@ -1,0 +1,112 @@
+.popup {
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    background: white;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.5s linear;
+}
+
+.popup_opend {
+    display: flex;
+    visibility: visible;
+    opacity: 0.8;
+}
+
+.popup__title {
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 68px;
+    margin-top: 0;
+    color: black;
+
+}
+
+.popup__title_registration {
+    text-align: center;
+    margin-bottom: 23px;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 24px;
+    color: black;
+}
+
+.popup__close-button {
+    position: absolute;
+    right: 60px;
+    top: 60px;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    background-image: url(../../images/icons8-close.svg);
+    background-repeat: no-repeat;
+    background-size: 32px;
+    cursor: pointer;
+    color: black;
+    z-index: 2;
+}
+
+.popup__close-button:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 920px) {
+    .popup__close-button {
+        width: 32px;
+        height: 32px;
+        background-size: 32px;
+        right: 60px;
+        top: 60px;
+    }
+}
+
+@media screen and (min-width: 920px) {
+    .popup__title_registration {
+        font-size: 24px;
+        line-height: 29px;
+    }
+}
+
+@media screen and (min-width: 920px) {
+    .popup__title {
+        font-size: 24px;
+        line-height: 29px;
+        margin-bottom: 41px;
+    }
+}
+
+.popup__info-tooltip_err {
+    background-image: url('../../images/UnionRed.svg');
+}
+
+.popup__info-tooltip {
+    background-image: url('../../images/UnionBlack.svg');
+    width: 120px;
+    height: 120px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 25px auto 32px auto;
+    padding-bottom: 8px;
+}
+
+@media screen and (min-width: 920px) {
+    .popup__info-tooltip {
+        padding-bottom: 0px;
+    }
+}
+
+
+@media screen and (min-width: 920px) {
+    .popup__info-tooltip {
+        padding-bottom: 0px;
+    }
+}
