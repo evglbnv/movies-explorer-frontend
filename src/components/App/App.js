@@ -338,13 +338,10 @@ function handleShortsChangeSaved() {
       <Routes>
         <Route element={<Layout loggedIn={loggedIn}/>} >
           <Route path={'/'} element={<Main/>}/>
-          <Route path='/movies'
-          loggedIn={loggedIn} 
-          element={
+          <Route path="/movies" element={
           <ProtectedRoute 
+            element={Movies}
             loggedIn={loggedIn}
-            path='/movies'
-            element= {Movies}
             onFindClick = {handleFindClickMovies}
             filteredMovies = {filteredMovies}
             savedMovies={savedMovies}
@@ -353,16 +350,16 @@ function handleShortsChangeSaved() {
             onShorts={handleShortsChangeMovies}
             shortsIsChecked={shortsIsChecked}
             likeMovie={likeMovie}
-          />}/>
-  
-          <Route path='/saved-movies' loggedIn={loggedIn}
+          />}>
+          </Route>
+
+          <Route path='/saved-movies'
            element={
             <ProtectedRoute 
               loggedIn={loggedIn} 
               element={SavedMovies}
               onFindClick = {handleFindClickSaved}
               savedMovies={savedMovies}
-              path='/saved-movies'
               savedFilteredMovies={savedFilteredMovies} 
               removeMovie={removeMovie}
               shortMovies={shortMoviesSaved}
@@ -379,7 +376,7 @@ function handleShortsChangeSaved() {
         onClickLogout={handleLogout} 
         handleUpdateProfile={handleUpdateProfile} />
       }/>
-      <Route path='/signin' element={loggedIn ? <Navigate to="/" replace/> : <Login handleAuthorize={handleAuthorize}/>}/>
+      <Route path='/signin' element={loggedIn ? <Navigate to="/" replace/> : <Login handleAuthorize={handleAuthorize} isLoading={isLoading}/>}/>
       <Route path='/signup' element={loggedIn ? <Navigate to="/" replace/> : <Register handleRegistration={handleRegistration} isLoading={isLoading}/>}/>
       <Route path="*" element={<NotFoundPage/>}/>
       </Routes>

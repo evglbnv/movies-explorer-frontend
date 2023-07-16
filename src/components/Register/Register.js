@@ -4,7 +4,7 @@ import { useState } from "react";
 import {Link} from "react-router-dom"
 import formLink from '../../images/formLink.svg'
 
-function Register({handleRegistration}) {
+function Register({handleRegistration, isLoading}) {
 
     const [userRegistrationData, setUserRegistrationData] = useState({
         name: "",
