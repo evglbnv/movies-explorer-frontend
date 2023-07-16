@@ -380,7 +380,7 @@ function handleShortsChangeSaved() {
         handleUpdateProfile={handleUpdateProfile} />
       }/>
       <Route path='/signin' element={loggedIn ? <Navigate to="/" replace/> : <Login handleAuthorize={handleAuthorize}/>}/>
-      <Route path='/signup' element={loggedIn ? <Navigate to="/" replace/> : <Register handleRegistration={handleRegistration}/>}/>
+      <Route path='/signup' element={loggedIn ? <Navigate to="/" replace/> : <Register handleRegistration={handleRegistration} isLoading={isLoading}/>}/>
       <Route path="*" element={<NotFoundPage/>}/>
       </Routes>
       <InfoToolTip

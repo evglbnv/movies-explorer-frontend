@@ -3,7 +3,7 @@ import { useState } from 'react';
 import formLink from '../../images/formLink.svg'
 import { Link } from "react-router-dom"
 
-function Login({handleAuthorize}) {
+function Login({handleAuthorize, isLoading}) {
 
     const [userLoginData, setUserLoginData] = useState({
         email: "",
@@ -65,7 +65,12 @@ function Login({handleAuthorize}) {
                 <span className="form__error">{errors.password}</span>
             </div>
             <div className="form__buttons-section">
-                <button className={isValid ? "form__submit-button form__submit-button_login" : "form__submit-button form__submit-button_login form__submit-button_disabled"}>Войти</button>
+                <button className={isValid ? "form__submit-button form__submit-button_login" : "form__submit-button form__submit-button_login form__submit-button_disabled"}
+                 type="submit"
+                 disabled={isLoading ? 'disabled' : ''}
+                >
+                    Войти
+                    </button>
                 <p className="form__question">
                     Еще не зарегистрированы?
                     <Link to='/signin' className="form__link">Регистрация</Link>

@@ -82,7 +82,10 @@ function Register({handleRegistration}) {
             </div>
             <div className="form__buttons-section">
                 <button 
-                className={isValid ? "form__submit-button" : "form__submit-button form__submit-button_disabled"}>
+                className={isValid ? "form__submit-button" : "form__submit-button form__submit-button_disabled"}
+                type="submit"
+                disabled={isLoading ? 'disabled' : ""}
+                >
                     Зарегистрироваться
                 </button>
                 <p className="form__question">
