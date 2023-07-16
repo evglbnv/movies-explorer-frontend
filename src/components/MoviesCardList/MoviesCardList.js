@@ -1,7 +1,7 @@
 import './MoviesCardList.css'
 import { useLocation } from 'react-router-dom'
 import MoviesCard from "../MoviesCard/MoviesCard"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function MoviesCardList({ filteredMovies, defineLikedMovies, savedMovies, likedMovies, removeMovie, likeMovie}) {
     const location = useLocation()
@@ -38,6 +38,17 @@ function MoviesCardList({ filteredMovies, defineLikedMovies, savedMovies, likedM
             setNumberOfCardsShown(filteredMovies.length)
         }
     }
+
+    const updateMoreItems = () => {
+        setNumberOfMoreItems(defineNumberOfMoreItems)
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', updateMoreItems);
+        return () => window.removeEventListener('resize', updateMoreItems);
+    });
+
+
 
     function renderEmptySearch() {
         return (
