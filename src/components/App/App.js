@@ -340,7 +340,7 @@ function handleShortsChangeSaved() {
         <div className='App'>
           {isLoading && <Preloader/>}
       <Routes>
-        <Route element={<Layout/>} >
+        <Route element={<Layout loggedIn={loggedIn}/>}  >
           <Route path={'/'} element={<Main/>}/>
           <Route path='/movies' 
           element={

@@ -3,10 +3,11 @@ import Header from "../Header/Header"
 import "./Layout.css"
 import Footer from "../Footer/Footer"
 
-function Layout() {
+function Layout({loggedIn}) {
+    console.log(loggedIn)
     return (
     <>
-        <Header/>
+        <Header loggedIn={loggedIn}/>
         <Outlet/>
         <Footer/>
     </>
