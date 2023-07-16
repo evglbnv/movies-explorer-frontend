@@ -117,10 +117,8 @@ function showErrorPopup(errorMessage = `Произошла ошибка.
         .checkTokenVerifcation(token)
         .then((res) => {
           setCurrentUser(res.data)
-          console.log(currentUser)
           setLoggedIn(true)
-          console.log(loggedIn)
-          navigate("/movies", {replace: true})
+          // navigate("/movies", {replace: true})
         })
         .catch((err) => {
           console.log(err);
