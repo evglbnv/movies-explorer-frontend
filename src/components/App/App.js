@@ -139,14 +139,14 @@ function showErrorPopup(errorMessage = `Произошла ошибка.
     localStorage.removeItem('searchKey');
     localStorage.removeItem('filteredMovies');
     localStorage.removeItem('token');
+    localStorage.removeItem('shortMovies');
+    localStorage.removeItem('shortsIsChecked');
     setLoggedIn(false)
-
     setCurrentUser({
       name: '',
       email: '',
       _id: ''
     })
-
     setSavedMovies([])
     setFilteredMovies([])
     setShortsSavedIsChecked(false);
@@ -340,7 +340,7 @@ function handleShortsChangeSaved() {
         <div className='App'>
           {isLoading && <Preloader/>}
       <Routes>
-        <Route element={<Layout loggedIn={loggedIn}/>}  >
+        <Route element={<Layout loggedIn={loggedIn}/>} >
           <Route path={'/'} element={<Main/>}/>
           <Route path='/movies' 
           element={
