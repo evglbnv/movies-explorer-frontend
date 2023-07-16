@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, useNavigate} from 'react-router-dom'
+import { Routes, Route, useNavigate, Navigate} from 'react-router-dom'
 import Main from '../Landing/Main';
 import './App.css'
 import Movies from '../Movies/Movies';
@@ -19,7 +19,6 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import InfoToolTip from '../InfoToolTip/InfoToolTip';
 
 function App() {
-
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState({
@@ -118,7 +117,6 @@ function showErrorPopup(errorMessage = `Произошла ошибка.
         .then((res) => {
           setCurrentUser(res.data)
           setLoggedIn(true)
-          // navigate("/movies", {replace: true})
         })
         .catch((err) => {
           console.log(err);
@@ -340,7 +338,8 @@ function handleShortsChangeSaved() {
       <Routes>
         <Route element={<Layout loggedIn={loggedIn}/>} >
           <Route path={'/'} element={<Main/>}/>
-          <Route path='/movies' 
+          <Route path='/movies'
+          loggedIn={loggedIn} 
           element={
           <ProtectedRoute 
             loggedIn={loggedIn}
@@ -356,7 +355,8 @@ function handleShortsChangeSaved() {
             likeMovie={likeMovie}
           />}/>
   
-          <Route path='/saved-movies' element={
+          <Route path='/saved-movies' loggedIn={loggedIn}
+           element={
             <ProtectedRoute 
               loggedIn={loggedIn} 
               element={SavedMovies}
@@ -379,8 +379,8 @@ function handleShortsChangeSaved() {
         onClickLogout={handleLogout} 
         handleUpdateProfile={handleUpdateProfile} />
       }/>
-      <Route path='/signin' element={<Login handleAuthorize={handleAuthorize}/>}/>
-      <Route path='/signup' element={<Register handleRegistration={handleRegistration}/>}/>
+      <Route path='/signin' element={loggedIn ? <Navigate to="/" replace/> : <Login handleAuthorize={handleAuthorize}/>}/>
+      <Route path='/signup' element={loggedIn ? <Navigate to="/" replace/> : <Register handleRegistration={handleRegistration}/>}/>
       <Route path="*" element={<NotFoundPage/>}/>
       </Routes>
       <InfoToolTip
