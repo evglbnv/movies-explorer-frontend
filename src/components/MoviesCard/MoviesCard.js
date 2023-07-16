@@ -61,7 +61,13 @@ function handleRemove(e) {
                 />
                 }
                 </div>
+                <a className='movie__trailer-link'
+                href={movie.trailerLink}
+                target="_blank"
+                rel='noreferrer'
+                >
                 <img className="movies-card__image" src={imageUrl} alt={movie.nameRU}></img>
+                </a>
         </li>
     )
 }
