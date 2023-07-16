@@ -2,29 +2,17 @@ import './MoviesCardList.css'
 import { useLocation } from 'react-router-dom'
 import MoviesCard from "../MoviesCard/MoviesCard"
 import { useState, useEffect } from 'react'
+import { RENDERED_BASIC_CARDS, RENDERED_MORE_CARD } from '../../utils/constants'
 
 function MoviesCardList({ filteredMovies, defineLikedMovies, savedMovies, likedMovies, removeMovie, likeMovie}) {
     const location = useLocation()
 
     function defineNumberOfStartCards() {
-        const width = window.innerWidth
-        if (width < 768 ) {
-            return 5
-        }
-        if (width < 1280) {
-            return 8
-        }
-
-        return 12
+       RENDERED_BASIC_CARDS()
     }
+
     function defineNumberOfMoreItems() {
-        const width = window.innerWidth;
-
-        if(width < 1280) {
-            return 2
-        }
-
-        return 3
+        RENDERED_MORE_CARD()
     }
 
 

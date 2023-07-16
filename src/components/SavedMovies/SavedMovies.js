@@ -13,7 +13,6 @@ function SavedMovies({
     loggedIn
 }) {
 
-    console.log(loggedIn)
     const [searchKeySaved, setSearchKeySaved] = useState('')
     function handleInputChange(e) {
         const value = e.target.value

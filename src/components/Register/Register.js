@@ -81,7 +81,10 @@ function Register({handleRegistration}) {
                 <span className="form__error">{errors.password}</span>
             </div>
             <div className="form__buttons-section">
-                <button className={isValid ? "form__submit-button" : "form__submit-button form__submit-button_disabled"}>Зарегистрироваться</button>
+                <button 
+                className={isValid ? "form__submit-button" : "form__submit-button form__submit-button_disabled"}>
+                    Зарегистрироваться
+                </button>
                 <p className="form__question">
                     Уже зарегистрированы?
                     <Link to='/signin' className="form__link">Войти</Link>
