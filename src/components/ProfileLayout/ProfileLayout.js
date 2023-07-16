@@ -5,7 +5,7 @@ import Profile from '../Profile/Profile';
 function ProfileLayout({ loggedIn, setPreloader, handleUpdateProfile, onClickLogout }) {
     return (
       <>
-        <Header />
+        <Header loggedIn={loggedIn}/>
         <Profile loggedIn={loggedIn} setPreloader={setPreloader} onSubmit={handleUpdateProfile} onClickLogout={onClickLogout}/>
       </>
     );

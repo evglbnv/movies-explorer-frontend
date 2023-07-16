@@ -3,7 +3,9 @@ import './Profile.css'
 import { useContext, useEffect, useState } from 'react'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 
-function Profile({onSubmit, onClickLogout}) {
+function Profile({onSubmit, onClickLogout, loggedIn}) {
+
+    console.log(loggedIn)
 
     const currentUser = useContext(CurrentUserContext)
 
