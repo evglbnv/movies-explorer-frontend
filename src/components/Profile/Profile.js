@@ -82,7 +82,6 @@ function Profile({onSubmit, onClickLogout, loggedIn}) {
                     <span className='profile__error'>{errors.email}</span>
                 </div>
                 { editClicked ? (<div className="profile__submit-section">
-                        {/* TODO: отправлять новые значения имени/почты в БД */}
                         <button
                             className={(isValid && isNewInfo) ? 'profile__submit-button' : 'profile__submit-button profile__submit-button_disabled'}
                             type="submit"

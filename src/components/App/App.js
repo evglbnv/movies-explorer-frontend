@@ -338,8 +338,9 @@ function handleShortsChangeSaved() {
       <Routes>
         <Route element={<Layout loggedIn={loggedIn}/>} >
           <Route path={'/'} element={<Main/>}/>
-          <Route path="/movies" element={
-          <ProtectedRoute 
+          { loggedIn ? (<>
+            <Route path="/movies" element={
+              <ProtectedRoute 
             element={Movies}
             loggedIn={loggedIn}
             onFindClick = {handleFindClickMovies}
@@ -350,7 +351,7 @@ function handleShortsChangeSaved() {
             onShorts={handleShortsChangeMovies}
             shortsIsChecked={shortsIsChecked}
             likeMovie={likeMovie}
-          />}>
+              />}>
           </Route>
 
           <Route path='/saved-movies'
@@ -366,18 +367,24 @@ function handleShortsChangeSaved() {
               shortsIsChecked={shortsSavedIsChecked}
               onShorts={handleShortsChangeSaved}
               />}/>
+              
+              <Route path='/profile' 
+              element={
+              <ProtectedRoute 
+              loggedIn={loggedIn} 
+              element={ProfileLayout} 
+              onClickLogout={handleLogout} 
+              handleUpdateProfile={handleUpdateProfile} />
+              }/>
+          </>
+          ) : 
+          (<>
+          <Route path='/signin' element={loggedIn ? <Navigate to="/" replace/> : <Login handleAuthorize={handleAuthorize} isLoading={isLoading}/>}/>
+          <Route path='/signup' element={loggedIn ? <Navigate to="/" replace/> : <Register handleRegistration={handleRegistration} isLoading={isLoading}/>}/>
+          </>)}
+
         </Route>
-     
-      <Route path='/profile' 
-        element={
-        <ProtectedRoute 
-        loggedIn={loggedIn} 
-        element={ProfileLayout} 
-        onClickLogout={handleLogout} 
-        handleUpdateProfile={handleUpdateProfile} />
-      }/>
-      <Route path='/signin' element={loggedIn ? <Navigate to="/" replace/> : <Login handleAuthorize={handleAuthorize} isLoading={isLoading}/>}/>
-      <Route path='/signup' element={loggedIn ? <Navigate to="/" replace/> : <Register handleRegistration={handleRegistration} isLoading={isLoading}/>}/>
+      
       <Route path="*" element={<NotFoundPage/>}/>
       </Routes>
       <InfoToolTip
