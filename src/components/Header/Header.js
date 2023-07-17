@@ -7,7 +7,6 @@ import { useState } from "react"
 import NavigationPopup from '../NavigationPopup/NavigationPopup'
 
 function Header({loggedIn}) {
-    console.log(loggedIn)
     const location = useLocation();
     const [menuIsOpened, setMenuIsOpened] = useState(false)
 

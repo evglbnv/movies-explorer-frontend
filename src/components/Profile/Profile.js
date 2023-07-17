@@ -3,9 +3,7 @@ import './Profile.css'
 import { useContext, useEffect, useState } from 'react'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 
-function Profile({onSubmit, onClickLogout, loggedIn}) {
-
-    console.log(loggedIn)
+function Profile({onSubmit, onClickLogout}) {
 
     const currentUser = useContext(CurrentUserContext)
 
@@ -93,7 +91,7 @@ function Profile({onSubmit, onClickLogout, loggedIn}) {
                             <button className="profile__edit" onClick={handleEdit}>Редактировать</button>
                         </li>
                         <li>
-                            <Link className="profile__link" onClick={onClickLogout}>Выйти из аккаунта</Link>
+                            <Link className="profile__link" onClick={onClickLogout} to="/">Выйти из аккаунта</Link>
                         </li>
                     </ul>)}
 

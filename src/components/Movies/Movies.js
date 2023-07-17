@@ -15,7 +15,6 @@ function Movies({filteredMovies,
     shortMovies}) {
 
     const [searchKey, setSearchKey] = useState('');
-    console.log(loggedIn);
     
 
     useEffect(() => {

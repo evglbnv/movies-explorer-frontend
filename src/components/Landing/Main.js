@@ -6,9 +6,10 @@ import AboutMe from "../AboutMe/AboutMe"
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-function Main () {
+function Main ({loggedIn}) {
     return (
-
+        <>
+    <Header loggedIn={loggedIn}/>
         <main>
             <Promo/>
             <LandingNav></LandingNav>
@@ -16,6 +17,7 @@ function Main () {
             <AboutTechs></AboutTechs>
             <AboutMe></AboutMe>
         </main>
+        </>
     )
 }
 

@@ -17,6 +17,7 @@ import * as filters from "../../utils/FIlters"
 import * as auth from "../../utils/auth"
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import InfoToolTip from '../InfoToolTip/InfoToolTip';
+import Profile from '../Profile/Profile';
 
 function App() {
   const [filteredMovies, setFilteredMovies] = useState([]);
@@ -92,13 +93,13 @@ function showErrorPopup(errorMessage = `Произошла ошибка.
   }
 
   // обработчик авторизации
-  function handleAuthorize(data) {
+  function handleAuthorize({email, password}) {
     setIsLoading(true)
-    auth.login(data).then((res) => {
+    auth.login(email, password).then((res) => {
       if(res.token) {
         localStorage.setItem('token' , res.token);
         setLoggedIn(true);
-        navigate("/movies", {replace: true}) 
+        navigate("/movies") 
     }
     })
     .catch((err) => {
@@ -131,6 +132,7 @@ function showErrorPopup(errorMessage = `Произошла ошибка.
   //выход из профиля
 
   function handleLogout() {
+    navigate("/", { replace: true })
     localStorage.removeItem('movies');
     localStorage.removeItem('searchKey');
     localStorage.removeItem('filteredMovies');
@@ -150,6 +152,7 @@ function showErrorPopup(errorMessage = `Произошла ошибка.
     setSavedFilteredMovies(false);
     setFilteredMovies([]);
     setShortMovies([]);
+    
   }
 
 
@@ -196,7 +199,6 @@ function showErrorPopup(errorMessage = `Произошла ошибка.
       })
       .catch((err) => {
         showErrorPopup(`При обновлении профиля произошла ошибка.`);
-        console.log(err)
       })
       .finally(() => {
         setIsLoading(false)
@@ -207,18 +209,15 @@ function showErrorPopup(errorMessage = `Произошла ошибка.
     let currentUserMovies = [];
   
     movies.forEach((movie) => {
-      console.log(movie)
         if (movie.owner === currentUserId) {
             currentUserMovies.push(movie);
         }
     })
-  console.log(currentUserMovies)
     return currentUserMovies;
   }
 
   //сохранение фильма
   function likeMovie(movie) {
-    console.log(movie)
     mainApi.saveMovie(movie)
     .then(() => {
       mainApi.getSavedMovies().then((res) => {
@@ -227,7 +226,6 @@ function showErrorPopup(errorMessage = `Произошла ошибка.
         setSavedFilteredMovies(currentUserMovies);
       })
     }).catch((err) => {
-      console.log(err);
       showErrorPopup();
   })
   }
@@ -245,7 +243,6 @@ function showErrorPopup(errorMessage = `Произошла ошибка.
         console.log(err);
     })
     }).catch((err) => {
-      console.log(err);
       showErrorPopup();
   })
   }
@@ -258,9 +255,7 @@ function showErrorPopup(errorMessage = `Произошла ошибка.
     } else {   
       mainApi.getSavedMovies()
       .then((res) => {
-        console.log(res)
         const currentUserMovies = findCurrentUserMovies(res.data, currentUser._id)
-        console.log(currentUserMovies)
         setSavedMovies(currentUserMovies);
         setSavedFilteredMovies(currentUserMovies);
         }
@@ -336,9 +331,12 @@ function handleShortsChangeSaved() {
         <div className='App'>
           {isLoading && <Preloader/>}
       <Routes>
-        <Route element={<Layout loggedIn={loggedIn}/>} >
-          <Route path={'/'} element={<Main/>}/>
+        
+          <Route path={'/'} element={<Main loggedIn={loggedIn}/>}/>
           { loggedIn ? (<>
+
+            <Route element={<Layout loggedIn={loggedIn}/>} >
+
             <Route path="/movies" element={
               <ProtectedRoute 
             element={Movies}
@@ -367,7 +365,7 @@ function handleShortsChangeSaved() {
               shortsIsChecked={shortsSavedIsChecked}
               onShorts={handleShortsChangeSaved}
               />}/>
-              
+                  </Route>
               <Route path='/profile' 
               element={
               <ProtectedRoute 
@@ -376,16 +374,17 @@ function handleShortsChangeSaved() {
               onClickLogout={handleLogout} 
               handleUpdateProfile={handleUpdateProfile} />
               }/>
+                
+            
           </>
           ) : 
-          (<>
-          <Route path='/signin' element={loggedIn ? <Navigate to="/" replace/> : <Login handleAuthorize={handleAuthorize} isLoading={isLoading}/>}/>
-          <Route path='/signup' element={loggedIn ? <Navigate to="/" replace/> : <Register handleRegistration={handleRegistration} isLoading={isLoading}/>}/>
+          ( <>
+          <Route path='/signin' element={<Login handleAuthorize={handleAuthorize} isLoading={isLoading}/>}/>
+          <Route path='/signup' element={<Register handleRegistration={handleRegistration} isLoading={isLoading}/>}/>
           </>)}
-
-        </Route>
-      
-      <Route path="*" element={<NotFoundPage/>}/>
+          
+          {<Route path="/*" element={<NotFoundPage/>}/>}
+  
       </Routes>
       <InfoToolTip
       isOpen={isInfoToolTipOpen}

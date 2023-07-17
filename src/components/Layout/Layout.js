@@ -4,7 +4,6 @@ import "./Layout.css"
 import Footer from "../Footer/Footer"
 
 function Layout({loggedIn}) {
-    console.log(loggedIn)
     return (
     <>
         <Header loggedIn={loggedIn}/>

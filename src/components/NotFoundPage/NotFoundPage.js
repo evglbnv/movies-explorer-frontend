@@ -7,7 +7,7 @@ function NotFoundPage() {
 
 
     function goBack() {
-        navigate(-1)
+        navigate("/")
     }
 
     return(
