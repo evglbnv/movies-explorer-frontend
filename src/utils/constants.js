@@ -1,8 +1,8 @@
 const BEATFILM_URL = "https://api.nomoreparties.co"
 
-// const BASE_URL = "https://api.evglbnvdiploma.nomoredomains.rocks"
+const BASE_URL = "https://api.evglbnvdiploma.nomoredomains.rocks"
 
-const BASE_URL = "http://localhost:3000"
+// const BASE_URL = "http://localhost:3000"
 
 const SHORT_FILM_MAX_DURATION = 40;
 
